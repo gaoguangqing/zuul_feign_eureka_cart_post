@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>购物车</title>
+<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+</head>
+<body>
+	<h1>购物车</h1>
+		<table border="1">
+			<tr>
+				<td>userId</td>
+				<td id="userId">7</td>
+			</tr>
+			<tr>
+				<td>itemId</td>
+				<td><input type="text" name="itemId" id="itemId" /></td>
+			</tr>
+			<tr>
+				<td>itemTitle</td>
+				<td><input type="text" name="itemTitle" id="itemTitle"  /></td>
+			</tr>
+			<tr>
+				<td>itemImage</td>
+				<td><input type="text" name="itemImage" id="itemImage"  /></td>
+			</tr>
+			<tr>
+				<td>itemPrice</td>
+				<td><input type="text" name="itemPrice" id="itemPrice" /></td>
+			</tr>
+			<tr>
+				<td>num</td>
+				<td><input type="text" name="num"  id="num" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button onclick="addCart()">加入购物车</button></td>
+			</tr>
+		</table>
+	<script>
+	function addCart(){
+		var params = {
+				userId : $("#userId").text(),
+				itemId : $("#itemId").val(),
+				itemTitle : $("#itemTitle").val(),
+				itemImage : $("#itemImage").val(),
+				itemPrice : $("#itemPrice").val(),
+				num : $("#num").val()
+			};
+			$.post("/shop/cart/save", params, function(result) {
+				if (result.status=="200") {
+					if (result.msg=="OK"){
+						alert("新增购物车成功");
+						window.location.href="cartlist.html";
+					}
+				} else if(result.status=="202"){
+					console.log(result);
+					alert(result.msg);
+					window.location.href="cartlist.html";
+				}else{
+					alert("新增商品失败");
+					window.location.href="cartlist.html";
+				}
+			});
+	}
+	</script>
+</body>
+</html>
