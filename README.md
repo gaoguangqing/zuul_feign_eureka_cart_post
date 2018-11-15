@@ -31,8 +31,16 @@ zuul:
       path: /shop/**
       serviceId: cart-consumer
 ```
-启动所有的服务后，在Eureka注册中心会看到如下的几个服务
+启动所有的服务后，在Eureka注册中心会看到如下的几个服务http://localhost:8761/
 ![Eureka注册中心](https://github.com/gaoguangqing/zuul_feign_eureka_cart_post/blob/master/eureka.png)
+购车列表页http://localhost:8050/cartlist.html
+![Eureka注册中心](https://github.com/gaoguangqing/zuul_feign_eureka_cart_post/blob/master/cartlist.png)
+添加到购物车页http://localhost:8050/cartadd.html
+![Eureka注册中心](https://github.com/gaoguangqing/zuul_feign_eureka_cart_post/blob/master/cartadd.png)
+修改数量页http://localhost:8050/cartmodify.html
+![Eureka注册中心](https://github.com/gaoguangqing/zuul_feign_eureka_cart_post/blob/master/cartmodify.png)
+删除购物车页http://localhost:8050/cartdelete.html
+![Eureka注册中心](https://github.com/gaoguangqing/zuul_feign_eureka_cart_post/blob/master/cartdelete.png)
 生产者的controller
 ```
 package com.spoon.controller;
