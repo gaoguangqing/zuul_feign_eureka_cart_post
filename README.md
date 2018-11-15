@@ -7,7 +7,7 @@ SpringCloud使用zuul,feign,eureka整合购物车,post提交版
 
 http://localhost:8050/cartlist.html
 
-请加上
+请在zuul的application.yml加上
 ```
   resources:
     static-locations: classpath:/statis/
