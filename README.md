@@ -69,6 +69,56 @@ public class CartController {
 	}
 }
 ```
+如果如上面的代码构造生产者Controller那么就可以用post提交保存购物车或者修改数量,那么前端的ajax可以向下面这么写
+添加购物车
+```
+function addCart(){
+		var params = {
+				userId : $("#userId").text(),
+				itemId : $("#itemId").val(),
+				itemTitle : $("#itemTitle").val(),
+				itemImage : $("#itemImage").val(),
+				itemPrice : $("#itemPrice").val(),
+				num : $("#num").val()
+			};
+			$.post("/shop/cart/save", params, function(result) {
+				if (result.status=="200") {
+					if (result.msg=="OK"){
+						alert("新增购物车成功");
+						window.location.href="cartlist.html";
+					}
+				} else if(result.status=="202"){
+					console.log(result);
+					alert(result.msg);
+					window.location.href="cartlist.html";
+				}else{
+					alert("新增商品失败");
+					window.location.href="cartlist.html";
+				}
+			});
+	}
+```
+修改数量
+```
+function updateCart(){
+		var params = {
+				userId : $("#userId").text(),
+				itemId : $("#itemId").val(),
+				num : $("#num").val()
+			};
+			$.post("/shop/cart/update", params, function(result) {
+				if (result.status=="200") {
+					if (result.msg=="OK"){
+						alert("修改成功");
+						window.location.href="cartlist.html";
+					}
+				}else{
+					alert("修改失败");
+					window.location.href="cartlist.html";
+				}
+			});
+	}
+```
 生产者的feign接口,用对象接受参数，要加上@RequestBody 
 ```
 package com.spoon.feign;
