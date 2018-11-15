@@ -12,7 +12,7 @@ http://localhost:8050/cartlist.html
   resources:
     static-locations: classpath:/statis/
 ```
-完整版
+完整版application.yml,注意到咱们的zuul是调用的消费者哦！
 ```
 server:
   port: 8050
